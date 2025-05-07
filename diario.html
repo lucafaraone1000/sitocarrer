@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitFlow - Diario Alimentare</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1 class="logo">FitFlow</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Schede Allenamento</a></li>
+                    <li><a href="diario.html" class="active">Diario Alimentare</a></li>
+                    <li><a href="consigli.html">Consigli Fitness</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero-diario" class="hero">
+            <div class="container">
+                <h2>Traccia la Tua Alimentazione e i Progressi</h2>
+                <p>Nutrizione e peso corporeo sotto controllo per una forma smagliante.</p>
+            </div>
+        </section>
+
+        <section id="diario-alimentare" class="container page-section">
+            <h3>Diario Alimentare del Giorno</h3>
+            <input type="date" id="dataDiario" class="input-field">
+            
+            <div class="riepilogo-macro">
+                <h4>Riepilogo Giornaliero:</h4>
+                <p>Calorie: <span id="totCalorie">0</span> kcal</p>
+                <p>Carboidrati: <span id="totCarboidrati">0</span> g</p>
+                <p>Grassi: <span id="totGrassi">0</span> g</p>
+                <p>Proteine: <span id="totProteine">0</span> g</p>
+            </div>
+
+            <div class="form-aggiungi-alimento">
+                <h4>Aggiungi Alimento:</h4>
+                <input type="text" id="inputNomeAlimento" placeholder="Nome Alimento" class="input-field">
+                <input type="number" id="inputCalorie" placeholder="Calorie (kcal)" class="input-field">
+                <input type="number" id="inputCarboidrati" placeholder="Carboidrati (g)" class="input-field">
+                <input type="number" id="inputGrassi" placeholder="Grassi (g)" class="input-field">
+                <input type="number" id="inputProteine" placeholder="Proteine (g)" class="input-field">
+                <select id="selectPasto" class="input-field">
+                    <option value="Colazione">Colazione</option>
+                    <option value="Pranzo">Pranzo</option>
+                    <option value="Cena">Cena</option>
+                    <option value="Spuntino">Spuntino</option>
+                </select>
+                <button id="btnAggiungiAlimento" class="btn btn-primary">Aggiungi al Diario</button>
+            </div>
+
+            <div id="listaAlimentiContainer">
+                <h4>Alimenti Consumati:</h4>
+                <ul id="listaAlimenti">
+                    <!-- Alimenti verranno aggiunti qui -->
+                </ul>
+            </div>
+        </section>
+
+        <section id="monitoraggio-peso" class="container page-section">
+            <h3>Monitoraggio Peso Corporeo</h3>
+            <p>Ultimo Peso Registrato: <span id="ultimoPesoRegistrato">N/D</span> kg (<span id="dataUltimoPeso">N/D</span>)</p>
+            <div class="form-registra-peso">
+                <input type="number" id="inputNuovoPeso" placeholder="Nuovo Peso (kg)" class="input-field">
+                <input type="date" id="dataRegistrazionePeso" class="input-field">
+                <button id="btnRegistraPeso" class="btn btn-primary">Registra Peso</button>
+            </div>
+            <h4>Andamento del Peso nel Tempo:</h4>
+            <div id="graficoPesoContainer" class="grafico-placeholder">
+                <p>(Qui verrebbe visualizzato un grafico dell'andamento del peso)</p>
+                <ul id="storicoPesiLista">
+                    <!-- Storico pesi per demo -->
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© <span id="currentYear"></span> FitFlow - Tutti i diritti riservati.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

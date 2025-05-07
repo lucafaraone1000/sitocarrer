@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitFlow - Schede Allenamento</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1 class="logo">FitFlow</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="active">Schede Allenamento</a></li>
+                    <li><a href="diario.html">Diario Alimentare</a></li>
+                    <li><a href="consigli.html">Consigli Fitness</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero-allenamento" class="hero">
+            <div class="container">
+                <h2>Crea e Traccia i Tuoi Allenamenti</h2>
+                <p>Il tuo workout planner personale per raggiungere ogni obiettivo.</p>
+            </div>
+        </section>
+
+        <section id="schede-utente" class="container page-section">
+            <h3>Le Mie Schede</h3>
+            <button id="btnCreaNuovaScheda" class="btn btn-primary">+ Crea Nuova Scheda</button>
+            <div id="elencoSchedeContainer" class="schede-grid">
+                <!-- Le schede verranno popolate qui dal JS -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Modale Creazione/Modifica Scheda -->
+    <div id="modalCreaScheda" class="modal">
+        <div class="modal-content">
+            <span class="close-button" id="closeModalScheda">×</span>
+            <h3>Crea Nuova Scheda Allenamento</h3>
+            <input type="text" id="inputNomeScheda" placeholder="Nome della Scheda (es. Lunedì - Petto)">
+            
+            <h4>Esercizi Aggiunti:</h4>
+            <ul id="listaEserciziSchedaCorrente">
+                <!-- Esercizi verranno aggiunti qui -->
+            </ul>
+            
+            <button id="btnApriModalAggiungiEsercizio" class="btn btn-secondary">Aggiungi Esercizio</button>
+            <button id="btnSalvaScheda" class="btn btn-primary">Salva Scheda</button>
+        </div>
+    </div>
+
+    <!-- Modale Aggiungi Esercizio -->
+    <div id="modalAggiungiEsercizio" class="modal">
+        <div class="modal-content">
+            <span class="close-button" id="closeModalEsercizio">×</span>
+            <h3>Aggiungi Esercizio alla Scheda</h3>
+            <div class="tabs">
+                <button class="tab-link active" data-tab="tab-predefiniti">Esercizi Predefiniti</button>
+                <button class="tab-link" data-tab="tab-custom">Crea Esercizio</button>
+            </div>
+
+            <div id="tab-predefiniti" class="tab-content active">
+                <h4>Scegli un Esercizio:</h4>
+                <select id="selectEsercizioPredefinito">
+                    <option value="" disabled selected>Seleziona Gruppo Muscolare</option>
+                    <optgroup label="Petto">
+                        <option data-nome="Panca Piana Bilanciere">Panca Piana Bilanciere</option>
+                        <option data-nome="Panca Inclinata Manubri">Panca Inclinata Manubri</option>
+                        <option data-nome="Croci su Panca Piana">Croci su Panca Piana</option>
+                        <option data-nome="Dip alle Parallele">Dip alle Parallele</option>
+                    </optgroup>
+                    <optgroup label="Dorso">
+                        <option data-nome="Trazioni alla Sbarra">Trazioni alla Sbarra</option>
+                        <option data-nome="Lat Machine Avanti">Lat Machine Avanti</option>
+                        <option data-nome="Rematore con Bilanciere">Rematore con Bilanciere</option>
+                        <option data-nome="Pulley Basso">Pulley Basso</option>
+                    </optgroup>
+                    <optgroup label="Gambe">
+                        <option data-nome="Squat con Bilanciere">Squat con Bilanciere</option>
+                        <option data-nome="Stacchi da Terra">Stacchi da Terra</option>
+                        <option data-nome="Leg Press">Leg Press</option>
+                        <option data-nome="Leg Extension">Leg Extension</option>
+                        <option data-nome="Leg Curl">Leg Curl</option>
+                    </optgroup>
+                     <optgroup label="Spalle">
+                        <option data-nome="Military Press Bilanciere">Military Press Bilanciere</option>
+                        <option data-nome="Alzate Laterali Manubri">Alzate Laterali Manubri</option>
+                        <option data-nome="Alzate Frontali Manubri">Alzate Frontali Manubri</option>
+                    </optgroup>
+                    <optgroup label="Braccia">
+                        <option data-nome="Curl Bilanciere EZ">Curl Bilanciere EZ</option>
+                        <option data-nome="French Press Bilanciere EZ">French Press Bilanciere EZ</option>
+                        <option data-nome="Curl Alternato Manubri">Curl Alternato Manubri</option>
+                        <option data-nome="Push Down Corda">Push Down Corda</option>
+                    </optgroup>
+                </select>
+                <button id="btnConfermaAggiungiEsercizioPredefinito" class="btn btn-tertiary">Aggiungi Selezionato</button>
+            </div>
+
+            <div id="tab-custom" class="tab-content">
+                <h4>Crea il Tuo Esercizio:</h4>
+                <input type="text" id="inputNomeEsercizioCustom" placeholder="Nome Esercizio">
+                <select id="selectGruppoMuscolareCustom">
+                    <option value="" disabled selected>Gruppo Muscolare</option>
+                    <option value="Petto">Petto</option>
+                    <option value="Dorso">Dorso</option>
+                    <option value="Gambe">Gambe</option>
+                    <option value="Spalle">Spalle</option>
+                    <option value="Bicipiti">Bicipiti</option>
+                    <option value="Tricipiti">Tricipiti</option>
+                    <option value="Addome">Addome</option>
+                    <option value="Altro">Altro</option>
+                </select>
+                <button id="btnConfermaAggiungiEsercizioCustom" class="btn btn-tertiary">Crea e Aggiungi</button>
+            </div>
+            
+            <div id="formDettagliEsercizio" style="display:none; margin-top: 15px;">
+                <h5 id="nomeEsercizioSelezionato"></h5>
+                <input type="number" id="inputSerie" placeholder="Serie (es. 3)">
+                <input type="text" id="inputRep" placeholder="Reps (es. 8-12)">
+                <input type="number" id="inputPeso" placeholder="Peso (kg, es. 50)">
+                <textarea id="inputNoteEsercizio" placeholder="Note (opzionale)"></textarea>
+                <button id="btnFinalizzaAggiuntaEsercizio" class="btn btn-primary">Conferma e Aggiungi alla Scheda</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>© <span id="currentYear"></span> FitFlow - Tutti i diritti riservati.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
